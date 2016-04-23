@@ -21,3 +21,5 @@ In the beginning of each test class:
 * With_MonadTest
 
 there is an old, ordinary and ugly solution and then new beautiful monad fix.
+
+Inspired: https://blogs.claritycon.com/blog/2013/08/functional-concepts-c/
