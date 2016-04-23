@@ -56,6 +56,28 @@ namespace Monad.UnitTests
         }
 
         [Test]
+        public void monad_with_not_null_at_work_with_logger_inside()
+        {
+            IPhone phone = A.Fake<IPhone>();
+            ILogger logger = A.Fake<ILogger>();
+
+            BuildingFactory.AtWorkNotNullBuilding()
+                .With(b => b.Manager)
+                .Log(logger, "Found Manager")
+                .If(m => m.IsAtWork)
+                .Log(logger, "Manager is at work")
+                .With(m => m.ContactInfo)
+                .With(c => c.PhoneNumber)
+                .Log(logger, "Dialing The Manager")
+                .Do((p) => phone.Call(p));
+
+            A.CallTo(() => phone.Call("1234")).MustHaveHappened();
+            A.CallTo(() => logger.Log("Monad.Person > Found Manager")).MustHaveHappened();
+            A.CallTo(() => logger.Log("Monad.Person > Manager is at work")).MustHaveHappened();
+            A.CallTo(() => logger.Log("1234 > Dialing The Manager")).MustHaveHappened();
+        }
+
+        [Test]
         public void monad_with_not_null_not_at_work()
         {
             IPhone phone = A.Fake<IPhone>();

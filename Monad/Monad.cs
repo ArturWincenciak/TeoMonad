@@ -43,5 +43,14 @@ namespace Monad
             return currentValue;
         }
 
+        public static T Log<T>(this T currentValue, ILogger logger, string message)
+            where T : class
+        {
+            if (currentValue != default(T))
+                logger.Log(currentValue + " > " + message);
+
+            return currentValue;
+        }
+
     }
 }
