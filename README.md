@@ -8,6 +8,7 @@ There are:
 * Do
 * If
 * Log
+
 monads.
 
 I created a sample set of classes in BuildingFactory for testing monads. In the beginning of each test class (Do_MonadTest, If_MonadTest, Log_MonadTest, With_MonadTest) there is an old, ordinary and ugly solution and then new beautiful monad fix.
