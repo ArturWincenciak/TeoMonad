@@ -1,4 +1,5 @@
 using FakeItEasy;
+using Monad.Monads;
 using NUnit.Framework;
 
 namespace Monad.UnitTests

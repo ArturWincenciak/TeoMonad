@@ -1,6 +1,6 @@
 using System;
 
-namespace Monad
+namespace Monad.Monads
 {
     public static class Monad
     {

@@ -1,7 +1,12 @@
 using System;
 
-namespace Monad
+namespace Monad.Monads
 {
+    /// <summary>
+    /// The class is not contain exactly monads. 
+    /// It is my maneuvering area.
+    /// Don't open this file any more.
+    /// </summary>
     public static class StrangeMonad
     {
         #region With
