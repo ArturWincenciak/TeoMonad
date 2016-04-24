@@ -119,5 +119,76 @@ namespace Monad.UnitTests
             A.CallTo(() => tester.Log("SetYElement2")).MustHaveHappened();
             A.CallTo(() => tester.Log("SetYElement3")).MustHaveHappened();
         }
+
+        [Test]
+        public void how_to_use_the_yeld_monad_3()
+        {
+            ILogger tester = A.Fake<ILogger>();
+            SomethingForTesting obj = new SomethingForTesting();
+
+            IEnumerable<string> enumerable =
+                _.Yield("AdditionalElement")
+                .Yield(obj.GetFromSetX)
+                .Yield("AdditionalElement2")
+                .Yield(obj.GetFromSetY);
+
+            foreach (var item in enumerable)
+                tester.Log(item);
+
+            A.CallTo(() => tester.Log("AdditionalElement")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetXElement1")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetXElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetXElement3")).MustHaveHappened();
+            A.CallTo(() => tester.Log("AdditionalElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement1")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement3")).MustHaveHappened();
+        }
+
+        [Test]
+        public void how_to_use_the_yeld_monad_4()
+        {
+            ILogger tester = A.Fake<ILogger>();
+            SomethingForTesting obj = new SomethingForTesting();
+
+            IEnumerable<string> enumerable =
+                obj.GetFromSetX()
+                .Yield("AdditionalElement2")
+                .Yield(obj.GetFromSetY);
+
+            foreach (var item in enumerable)
+                tester.Log(item);
+
+            A.CallTo(() => tester.Log("SetXElement1")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetXElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetXElement3")).MustHaveHappened();
+            A.CallTo(() => tester.Log("AdditionalElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement1")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement3")).MustHaveHappened();
+        }
+
+        [Test]
+        public void how_to_use_the_yeld_monad_5()
+        {
+            ILogger tester = A.Fake<ILogger>();
+            SomethingForTesting obj = new SomethingForTesting();
+
+            IEnumerable<string> enumerable =
+                _.Yield(obj.GetFromSetX)
+                .Yield("AdditionalElement2")
+                .Yield(obj.GetFromSetY);
+
+            foreach (var item in enumerable)
+                tester.Log(item);
+
+            A.CallTo(() => tester.Log("SetXElement1")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetXElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetXElement3")).MustHaveHappened();
+            A.CallTo(() => tester.Log("AdditionalElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement1")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement2")).MustHaveHappened();
+            A.CallTo(() => tester.Log("SetYElement3")).MustHaveHappened();
+        }
     }
 }

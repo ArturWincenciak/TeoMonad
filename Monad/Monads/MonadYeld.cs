@@ -21,5 +21,14 @@ namespace Monad.Monads
                 foreach (var item in add)
                     yield return item;
         }
+
+        public static IEnumerable<T> Yield<T>(this IEnumerable<T> source, T additional)
+        {
+            if (default(IEnumerable<T>) != source)
+                foreach (var item in source)
+                    yield return item;
+
+            yield return additional;
+        }
     }
 }
